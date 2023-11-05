@@ -1,15 +1,17 @@
-﻿namespace ConsoleApp1
+﻿using ConsoleApp1.Models;
+
+namespace ConsoleApp1
 {
-	public class Program
+    public class Program
 	{
 		static void Main(string[] args)
 		{
 			Company company = new Company();
-			company.Name = "Codeacademy";
+			company.Name = "CodeAcademy";
 
 			while (true) 
 			{
-				Console.WriteLine("Choose from below option: \n1. Create employee. \n2. Get employee details by Id. \n3. Get all employee. \n4. Remove employee. \n5.Update employee ");
+				Console.WriteLine("Choose from below option: \n1. Create employee. \n2. Get employee details by Id. \n3. Get all employee. \n4. Remove employee. \n5. Update employee ");
 				int choose = Convert.ToInt32(Console.ReadLine());
 				switch (choose)
 				{
@@ -20,7 +22,9 @@
                         emp.Name = Console.ReadLine();
                         Console.WriteLine("Surname: ");
                         emp.Surname = Console.ReadLine();
-						company.AddEmployee(emp);
+                        Console.WriteLine("Age: ");
+						emp.Age = Convert.ToInt32(Console.ReadLine());
+                        company.AddEmployee(emp);
 						Console.WriteLine("Add employee");
 
 						break;
@@ -55,8 +59,9 @@
                             updatedEmployee.Name = Console.ReadLine();
                             Console.WriteLine("Surname: ");
                             updatedEmployee.Surname = Console.ReadLine();
+                            Console.WriteLine("Age: ");
+							updatedEmployee.Age = Convert.ToInt32(Console.ReadLine());
                         }
-                       
                         break;
 				}
 			}
