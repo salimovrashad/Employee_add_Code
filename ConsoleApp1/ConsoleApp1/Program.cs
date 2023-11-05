@@ -9,7 +9,7 @@
 
 			while (true) 
 			{
-				Console.WriteLine("Choose from below option: \n1. Create employee. \n2. Get employee details by Id. \n3. Get all employee. \n4. Remove employee. \n5. ");
+				Console.WriteLine("Choose from below option: \n1. Create employee. \n2. Get employee details by Id. \n3. Get all employee. \n4. Remove employee. \n5.Update employee ");
 				int choose = Convert.ToInt32(Console.ReadLine());
 				switch (choose)
 				{
@@ -45,6 +45,18 @@
 						break;
 
 					case 5:
+                        Console.WriteLine("Id daxil edin: ");
+                        int updateId = Convert.ToInt32(Console.ReadLine());
+
+                        Employee updatedEmployee = company.UpGetEmployeeById(updateId);
+                        if (updatedEmployee != null)
+                        {
+                            Console.WriteLine("Name: ");
+                            updatedEmployee.Name = Console.ReadLine();
+                            Console.WriteLine("Surname: ");
+                            updatedEmployee.Surname = Console.ReadLine();
+                        }
+                       
                         break;
 				}
 			}

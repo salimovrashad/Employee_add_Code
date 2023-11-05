@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
-	public class Company : Employee
+    public class Company : Employee
 	{
         public string Name { get; set; }
 		List<Employee> employees = new List<Employee>();
@@ -21,21 +15,40 @@ namespace ConsoleApp1
             {
                 if (emp.Id == Id)
                 {
-                    Console.WriteLine(emp.Name);
+                    Console.WriteLine(emp.Name + " " + emp.Surname);
                 }
             }
         }
-		public void GetAllEmployee() 
+        public Employee UpGetEmployeeById(int Id)
+        {
+            foreach (var emp in employees)
+            {
+                if (emp.Id == Id)
+                {
+                    return emp;
+                }
+            }
+            return null;
+        }
+        public void GetAllEmployee()
 		{
             foreach (var employee in employees)
             {
                 Console.WriteLine($"{employee.Id}. {employee.Name} {employee.Surname}");
             }
         }
-		public void UpdateEmployee(Employee employee) 
+		public void UpdateEmployee(Employee employee)
 		{
-			employee.Name = "SADSADS";
-		}
+            Console.WriteLine("Id daxil ele: ");
+            int uid = Convert.ToInt32(Console.ReadLine());
+
+            if (employee.Id == uid)
+            {
+                Console.WriteLine("Surname deyis: ");
+                employee.Surname = Console.ReadLine();
+            }
+            
+        }
 		public void RemoveEmployee(int Id)
 		{
             foreach (var emp in employees)

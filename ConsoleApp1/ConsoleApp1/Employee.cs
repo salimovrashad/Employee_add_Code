@@ -15,5 +15,7 @@ namespace ConsoleApp1
 			Male,
 			Female,
 		}
-	}
+
+        
+    }
 }
