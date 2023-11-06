@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1.Models
+﻿namespace ConsoleApp1.Models
 {
-    public class Employee : Person
+	public class Employee : Person
     {
         public int Salary { get; set; }
         public string Position { get; set; }
 
+		public override string ToString()
+		{
+			return $"{Id}. {Name} {Surname} {Age} {gender}";
+		}
 
 
-
-    }
+	}
 }

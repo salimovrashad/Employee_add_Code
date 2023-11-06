@@ -16,6 +16,7 @@ namespace ConsoleApp1
 				switch (choose)
 				{
 					case 1:
+						
 						Employee emp = new Employee();
 
                         Console.WriteLine("Name: ");
@@ -24,16 +25,16 @@ namespace ConsoleApp1
                         emp.Surname = Console.ReadLine();
                         Console.WriteLine("Age: ");
 						emp.Age = Convert.ToInt32(Console.ReadLine());
-                        company.AddEmployee(emp);
+                        Console.WriteLine("Gender: ");
+						emp.gender = (Gender)Convert.ToInt32(Console.ReadLine());
+						company.AddEmployee(emp);
 						Console.WriteLine("Add employee");
-
 						break;
 					case 2:
 
 						Console.WriteLine("Id daxil edin: ");
 						int id = Convert.ToInt32(Console.ReadLine());
 						company.GetEmployeeById(id);
-
 						break;
 					case 3:
 

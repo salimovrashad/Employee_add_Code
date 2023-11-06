@@ -11,55 +11,27 @@
         }
         public void GetEmployeeById(int Id)
         {
-            foreach (var emp in employees)
-            {
-                if (emp.Id == Id)
-                {
-                    Console.WriteLine(emp.Name + " " + emp.Surname + " " + emp.Age);
-                }
-            }
+            foreach (var item in employees.FindAll(p => p.Id == Id))Console.WriteLine(item);
         }
         public Employee UpGetEmployeeById(int Id)
         {
-            foreach (var emp in employees)
-            {
-                if (emp.Id == Id)
-                {
-                    return emp;
-                }
-            }
-            return null;
+			var delegat = employees.FindAll(p => p.Id == Id);
+			foreach (var item in delegat)
+			{
+				return item;
+			}
+			return null;
         }
         public void GetAllEmployee()
         {
-            foreach (var employee in employees)
-            {
-                Console.WriteLine($"{employee.Id}. {employee.Name} {employee.Surname} {employee.Age}");
-            }
-        }
-        public void UpdateEmployee(Employee employee)
-        {
-            Console.WriteLine("Id daxil ele: ");
-            int uid = Convert.ToInt32(Console.ReadLine());
-
-            if (employee.Id == uid)
-            {
-                Console.WriteLine("Surname deyis: ");
-                employee.Surname = Console.ReadLine();
-            }
-
-        }
+			employees.ForEach(delegate (Employee employee) {
+				Console.WriteLine(employee);
+			});
+		}
         public void RemoveEmployee(int Id)
         {
-            foreach (var emp in employees)
-            {
-                if (Id == emp.Id)
-                {
-                    employees.Remove(emp);
-                    return;
-                }
-            }
-        }
+			foreach (var item in employees.FindAll(p => p.Id == Id)) employees.Remove(item);
+		}
 
     }
 }
