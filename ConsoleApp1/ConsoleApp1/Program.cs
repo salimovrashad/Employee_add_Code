@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.Models;
+using ConsoleApp1.Services;
 
 namespace ConsoleApp1
 {
@@ -6,9 +7,6 @@ namespace ConsoleApp1
 	{
 		static void Main(string[] args)
 		{
-			Company company = new Company();
-			company.Name = "CodeAcademy";
-
 			while (true) 
 			{
 				Console.WriteLine("Choose from below option: \n1. Create employee. \n2. Get employee details by Id. \n3. Get all employee. \n4. Remove employee. \n5. Update employee ");
@@ -27,18 +25,20 @@ namespace ConsoleApp1
 						emp.Age = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Gender: ");
 						emp.gender = (Gender)Convert.ToInt32(Console.ReadLine());
-						company.AddEmployee(emp);
+                        Console.WriteLine("DateTime: (yyyy-MM-dd HH:mm:ss)");
+						emp.CreatedAt = DateTime.Parse(Console.ReadLine());
+                        EmployeeServices.AddEmployee(emp);
 						Console.WriteLine("Add employee");
 						break;
 					case 2:
 
 						Console.WriteLine("Id daxil edin: ");
 						int id = Convert.ToInt32(Console.ReadLine());
-						company.GetEmployeeById(id);
+						EmployeeServices.GetEmployeeById(id);
 						break;
 					case 3:
 
-						company.GetAllEmployee();
+						EmployeeServices.GetAllEmployee();
 						break;
 
 					case 4:
@@ -46,14 +46,14 @@ namespace ConsoleApp1
 						Console.WriteLine("Id daxil edin: ");
 						int reid = Convert.ToInt32(Console.ReadLine());
 
-						company.RemoveEmployee(reid);
+						EmployeeServices.RemoveEmployee(reid);
 						break;
 
 					case 5:
                         Console.WriteLine("Id daxil edin: ");
                         int updateId = Convert.ToInt32(Console.ReadLine());
 
-                        Employee updatedEmployee = company.UpGetEmployeeById(updateId);
+                        Employee updatedEmployee = EmployeeServices.UpGetEmployeeById(updateId);
                         if (updatedEmployee != null)
                         {
                             Console.WriteLine("Name: ");
@@ -62,8 +62,16 @@ namespace ConsoleApp1
                             updatedEmployee.Surname = Console.ReadLine();
                             Console.WriteLine("Age: ");
 							updatedEmployee.Age = Convert.ToInt32(Console.ReadLine());
-                        }
+                            Console.WriteLine("Gender: ");
+							updatedEmployee.gender = (Gender)Convert.ToInt32(Console.ReadLine());
+						}
                         break;
+					case 6:
+						EmployeeServices.GetLatestEmployees();
+						break;
+					case 7:
+						EmployeeServices.GetEmployeeByValue(Console.ReadLine());
+						break;
 				}
 			}
         }

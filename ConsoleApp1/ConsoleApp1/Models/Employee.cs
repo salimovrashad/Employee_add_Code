@@ -7,9 +7,7 @@
 
 		public override string ToString()
 		{
-			return $"{Id}. {Name} {Surname} {Age} {gender}";
+			return $"{Id}. {Name} {Surname} {Age} {gender} {CreatedAt}";
 		}
-
-
 	}
 }
